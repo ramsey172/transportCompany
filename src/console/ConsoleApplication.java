@@ -38,7 +38,7 @@ public class ConsoleApplication {
                         }
                     }
                     case 3 -> {
-                        return;
+                        System.exit(0);
                     }
                 }
             } else {

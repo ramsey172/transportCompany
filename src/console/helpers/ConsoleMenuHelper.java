@@ -22,7 +22,6 @@ public class ConsoleMenuHelper {
         if (currentUser.isAdmin()) {
             write("2. Edit");
         }
-        write(String.valueOf(currentUser.isAdmin()));
         int i = readInt();
         switch (i) {
             case 1 -> {
