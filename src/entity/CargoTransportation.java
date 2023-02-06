@@ -19,6 +19,26 @@ public class CargoTransportation extends AbstractEntity {
         this.routeTime = routeTime;
     }
 
+    public City getDeparture() {
+        return departure;
+    }
+
+    public City getDestination() {
+        return destination;
+    }
+
+    public Transport getTransport() {
+        return transport;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public double getRouteLength() {
+        return routeLength;
+    }
+
     public String asString() {
         return toString();
     }

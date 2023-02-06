@@ -1,11 +1,13 @@
-package storage;
+package storage.in_memory;
 
 import entity.City;
+import storage.AbstractStorage;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class InMemoryCityStorage implements CityStorage{
+public class InMemoryCityStorage extends AbstractStorage<City> {
     private long ids = 1;
     private List<City> citiesList = new ArrayList<>();
 

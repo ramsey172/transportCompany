@@ -1,14 +1,14 @@
 package services;
 
 import entity.City;
-import storage.CityStorage;
-import storage.InMemoryCityStorage;
+import storage.JDBC.JDBCCityStorage;
+import storage.AbstractStorage;
 
 import java.util.List;
 import java.util.Optional;
 
 public class CityManageService {
-    CityStorage cityStorage = new InMemoryCityStorage();
+    AbstractStorage<City> cityStorage = new JDBCCityStorage();
 
     public void add(City city) {
         cityStorage.save(city);

@@ -1,24 +1,17 @@
 package services;
 
 import entity.User;
-import storage.InMemoryUserStorage;
-import storage.UserStorage;
+import storage.JDBC.JDBCUserStorage;
 
 import java.util.List;
 import java.util.Optional;
 
 public class UserService {
-    UserStorage userStorage = new InMemoryUserStorage();
+    JDBCUserStorage userStorage = new JDBCUserStorage();
 
     public Optional<User> getUserByCredentials(String nickname, String password) {
-        return userStorage
-                .getAll()
-                .stream()
-                .filter(user -> user.getNickname().equals(nickname) && user.getPassword().equals(password))
-                .findFirst();
+        return userStorage.getByCredentials(nickname, password);
     }
-
-
 
     public void create(User user) {
         userStorage.save(user);

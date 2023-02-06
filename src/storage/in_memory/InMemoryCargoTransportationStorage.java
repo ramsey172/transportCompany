@@ -1,12 +1,13 @@
-package storage;
+package storage.in_memory;
 
 import entity.CargoTransportation;
+import storage.AbstractStorage;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class InMemoryCargoTransportationStorage implements CargoTransportationStorage {
+public class InMemoryCargoTransportationStorage extends AbstractStorage<CargoTransportation> {
     private long ids = 1;
     private List<CargoTransportation> cargoTransportationsList = new ArrayList<>();
 

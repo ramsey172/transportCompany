@@ -5,8 +5,8 @@ import entity.City;
 import entity.Transport;
 import entity.User;
 import entity.enums.TransportType;
-import storage.CargoTransportationStorage;
-import storage.InMemoryCargoTransportationStorage;
+import storage.AbstractStorage;
+import storage.JDBC.JDBCCargoTransportationStorage;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -18,7 +18,7 @@ public class CargoTransportationService {
     private static final double EARTH_RADIUS = 6372.795;
 
     private List<CargoTransportation> suitableCargoTransportations = new ArrayList<>();
-    private final CargoTransportationStorage cargoTransportationStorage = new InMemoryCargoTransportationStorage();
+    private final AbstractStorage<CargoTransportation> cargoTransportationStorage = new JDBCCargoTransportationStorage();
 
     public void setSuitableCargoTransportationsByParams(List<Transport> transportList, City city1, City city2, int peopleCapacity, double cargoWeight, User user) {
         List<TransportType> transportTypes = new ArrayList<>();

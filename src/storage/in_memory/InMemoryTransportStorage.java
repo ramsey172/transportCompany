@@ -1,11 +1,13 @@
-package storage;
+package storage.in_memory;
 
 import entity.Transport;
+import storage.AbstractStorage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-public class InMemoryTransportStorage implements TransportStorage {
+public class InMemoryTransportStorage extends AbstractStorage<Transport> {
     private long ids = 1;
     private List<Transport> transportsList = new ArrayList<>();
 
@@ -14,6 +16,11 @@ public class InMemoryTransportStorage implements TransportStorage {
     public void save(Transport transport) {
         transport.setId(ids++);
         transportsList.add(transport);
+    }
+
+    @Override
+    public Optional<Transport> getById(long id) {
+        return transportsList.stream().filter(transport -> transport.getId() == id).findFirst();
     }
 
     @Override

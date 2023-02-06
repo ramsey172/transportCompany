@@ -1,11 +1,8 @@
 package console;
 
 import console.helpers.ConsoleMenuHelper;
-import entity.City;
-import entity.Transport;
-import entity.enums.Role;
 import entity.User;
-import entity.enums.TransportType;
+import entity.enums.Role;
 import services.CargoTransportationService;
 import services.CityManageService;
 import services.TransportManageService;
@@ -13,8 +10,9 @@ import services.UserService;
 
 import java.util.List;
 
-import static console.util.ConsoleReader.*;
-import static console.util.ConsoleWriter.*;
+import static console.util.ConsoleReader.readInt;
+import static console.util.ConsoleReader.readString;
+import static console.util.ConsoleWriter.write;
 
 public class ConsoleApplication {
     public ConsoleSession consoleSession = new ConsoleSession();
@@ -24,7 +22,6 @@ public class ConsoleApplication {
     private final CargoTransportationService cargoTransportationService = new CargoTransportationService();
 
     public void run() {
-        setDefaults();
         while (true) {
             if (consoleSession.getCurrentUser().isEmpty()) {
                 write("Hello guest!");
@@ -38,7 +35,7 @@ public class ConsoleApplication {
                         }
                     }
                     case 3 -> {
-                        System.exit(0);
+                        return;
                     }
                 }
             } else {
@@ -95,33 +92,5 @@ public class ConsoleApplication {
             return true;
         }
         return false;
-    }
-    private void setDefaultCities() {
-        City city1 = new City("Prague", 50.09, 14.42, true, false);
-        City city2 = new City("Vein", 48.21, 16.37, true, false);
-        City city3 = new City("Hamburg", 53.57, 10.01, true, true);
-        City city4 = new City("Chausy", 53.48, 30.58, false, false);
-        City city5 = new City("Tallinn", 59.26, 24.45, true, true);
-        cityManageService.add(city1);
-        cityManageService.add(city2);
-        cityManageService.add(city3);
-        cityManageService.add(city4);
-        cityManageService.add(city5);
-    }
-
-    private void setDefaultTransports() {
-        Transport transport1 = new Transport("Donkey", 5, 1, 50, TransportType.GROUND, 3);
-        Transport transport2 = new Transport("Mondeo 2002", 90, 4, 300, TransportType.GROUND, 6);
-        Transport transport3 = new Transport("Ship", 30, 400, 500000, TransportType.SEA, 10);
-        Transport transport4 = new Transport("Aircraft", 700, 100, 10000, TransportType.AIR, 100);
-        transportManageService.add(transport1);
-        transportManageService.add(transport2);
-        transportManageService.add(transport3);
-        transportManageService.add(transport4);
-    }
-
-    private void setDefaults() {
-        setDefaultCities();
-        setDefaultTransports();
     }
 }
